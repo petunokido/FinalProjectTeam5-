@@ -22,6 +22,7 @@ public class Invoice
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int number;
 
 
