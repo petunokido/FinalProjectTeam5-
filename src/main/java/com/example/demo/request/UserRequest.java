@@ -1,4 +1,4 @@
-package com.example.demo.controller.request;
+package com.example.demo.request;
 
 import lombok.*;
 
