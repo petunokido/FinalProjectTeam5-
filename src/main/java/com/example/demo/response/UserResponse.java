@@ -21,7 +21,7 @@ public class UserResponse
 public UserResponse userResponseResponse (User user)
 {
     this.id = user.getId();
-    this.userName = user.getUsername();
+    this.userName = user.getUserName();
     this.age = user.getAge();
     //this.invoiceRequest= user.getInvoice();
     return this;

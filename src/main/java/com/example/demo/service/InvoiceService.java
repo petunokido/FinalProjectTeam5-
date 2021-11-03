@@ -37,7 +37,7 @@ public class InvoiceService {
 
 
     public Invoice createInvoice(InvoiceRequest invoice) {
-        String username = invoice.getUser().getUsername();
+        String username = invoice.getUser().getUserName();
         if (userRepository.getUserByUserName(username).isEmpty()){
             throw new UserNotFound("The specified user doesn't exist. Please created first.");
         } else{
