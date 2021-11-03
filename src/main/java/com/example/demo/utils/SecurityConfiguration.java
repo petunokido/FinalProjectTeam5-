@@ -16,24 +16,31 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService);
     }
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/login").permitAll()
+                .antMatchers("/Admin").hasAnyRole("ADMIN","USER")
+                .antMatchers("/User").hasRole("USER")
+                .antMatchers("/swagger-ui/**").authenticated()
                 .antMatchers("/").permitAll()
-                .and().formLogin();
+                .and().formLogin().usernameParameter("username").passwordParameter("password");
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/projetofinal/**").hasRole("ADMIN")
+                .antMatchers("/User/**").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/").permitAll()
+                .and()
+                .httpBasic();
     }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder() {
+    public PasswordEncoder getPassword() {
         return NoOpPasswordEncoder.getInstance();
     }
+
 }

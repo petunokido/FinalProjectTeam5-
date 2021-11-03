@@ -14,7 +14,7 @@ import java.util.List;
 public class UserRequest {
 
     private int id;
-    private String name;
+    private String userName;
     private int age;
-    private InvoiceRequest invoiceRequest;
+    //private InvoiceRequest invoiceRequest;
 }

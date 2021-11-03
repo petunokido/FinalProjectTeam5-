@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>
-{ Optional<User> getUserByName(String name); //Derived Query method
+{ Optional<User> getUserByUserName (String name); //Derived Query method
 
 
 }

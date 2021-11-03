@@ -5,6 +5,8 @@ import com.example.demo.model.Product;
 import com.example.demo.request.ProductRequest;
 import com.example.demo.response.ProductResponse;
 import com.example.demo.service.ProductService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,8 @@ public class ProductController {
     }
 
     //get all products
+    @ApiOperation(value = "Update registration detail",
+            authorizations = { @Authorization(value="basicAuth") })
     @GetMapping("/products")
     public List<ProductResponse> getAllProducts(){
         List<Product> products = productService.getAllProducts();
@@ -42,6 +46,8 @@ public class ProductController {
     }
 
     //find product by Id
+    @ApiOperation(value = "Update registration detail",
+            authorizations = { @Authorization(value="basicAuth") })
     @GetMapping("/products/{id}")
     public ProductResponse getProductById(@PathVariable int id){
         Product product = productService.getProductById(id);
@@ -53,6 +59,8 @@ public class ProductController {
     }
 
     //create new product
+    @ApiOperation(value = "Update registration detail",
+            authorizations = { @Authorization(value="basicAuth") })
     @PostMapping(value = "/products", consumes = "application/json")
     public ProductResponse createProduct(@RequestBody @Valid ProductRequest productRequest){
         Product product= productService.createProduct(Product.builder()

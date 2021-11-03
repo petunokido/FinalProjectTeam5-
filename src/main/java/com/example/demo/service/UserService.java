@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.exception.UserNotFound;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.response.UserResponse;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +22,7 @@ public class UserService
     public User updateUser (int id, String name, int age)
     {
         User updateUser = this.findById(id);
-        updateUser.setName(name);
+        updateUser.setUserName(name);
         updateUser.setAge(age);
         userRepository.save(updateUser);
         return updateUser;

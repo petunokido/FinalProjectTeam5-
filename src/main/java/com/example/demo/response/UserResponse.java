@@ -14,16 +14,16 @@ import java.util.List;
 public class UserResponse
 {
     private int id;
-    private String name;
+    private String userName;
     private int age;
-    private List<Invoice> invoiceRequest;
+    //private List<Invoice> invoiceRequest;
 
 public UserResponse userResponseResponse (User user)
 {
     this.id = user.getId();
-    this.name = user.getName();
+    this.userName = user.getUsername();
     this.age = user.getAge();
-    this.invoiceRequest= user.getInvoice();
+    //this.invoiceRequest= user.getInvoice();
     return this;
 }
 }

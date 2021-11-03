@@ -37,11 +37,11 @@ public class InvoiceService {
 
 
     public Invoice createInvoice(InvoiceRequest invoice) {
-        String username = invoice.getUser().getName();
-        if (userRepository.getUserByName(username).isEmpty()){
+        String username = invoice.getUser().getUsername();
+        if (userRepository.getUserByUserName(username).isEmpty()){
             throw new UserNotFound("The specified user doesn't exist. Please created first.");
         } else{
-            User user = userRepository.getUserByName(username).get();}    //Finds the user based on the request
+            User user = userRepository.getUserByUserName(username).get();}    //Finds the user based on the request
         List<ProductRequest> listproductrq = invoice.getProducts(); //List with al the products requests
         List<Product> listproducts = new ArrayList<Product>();  //Empty list of requests to be populated with the products
         for(ProductRequest product:listproductrq){
